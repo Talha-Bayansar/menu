@@ -137,6 +137,18 @@ function displayMenuButtons() {
         return `<button class="filter-btn" type="button" value="${category}">${category}</button>`;
     }).join("");
     filtersDiv.innerHTML = categoryBtns;
+    const filterBtns = filtersDiv.querySelectorAll(".filter-btn");
+    filterBtns.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const category = e.target.value;
+            const menuCategory = menu.filter(menuItem => menuItem.category === category);
+            if (category !== "all") {
+                displayMenuItems(menuCategory);
+            } else {
+                displayMenuItems(menu);
+            }
+        });
+    });
 }
 
 //eventlisteners
