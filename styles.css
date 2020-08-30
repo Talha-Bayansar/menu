@@ -29,6 +29,55 @@ h1, h2, h3, h4, h5, h6{
     letter-spacing: 0.25rem;
 }
 
+/*------------------------TITLE-------------------------*/
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+.title-underline{
+    margin-top: 1rem;
+    border: none;
+    background-color: var(--color-gold);
+    height: 4px;
+    width: 5rem;
+}
+
+/*------------------------FILTERS-------------------------*/
+
+.filters{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.filter-btn{
+    display: block;
+    margin: 0 0.5rem;
+    border-color: var(--color-gold);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    color: var(--color-gold);
+    background-color: var(--primary-bg);
+    cursor: pointer;
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    outline: none;
+    transition: 0.5s ease;
+    letter-spacing: 1px;
+}
+
+.filter-btn:hover{
+    background-color: var(--color-gold);
+    color: white;
+}
+
 /*----------------------MENU-----------------------*/
 
 img{
@@ -43,7 +92,7 @@ img{
     width: 40rem;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem 0;
+    gap: 3rem 0;
 }
 
 .menu-item{
