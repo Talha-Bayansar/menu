@@ -1,5 +1,6 @@
 // queryselectors
-
+const menuDiv = document.querySelector(".menu");
+const filtersDiv = document.querySelector(".filters");
 
 // constants
 const menu = [
@@ -84,15 +85,15 @@ const menu = [
         desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
     },
 ];
-  /*
+/*
 {
-    id: 1,
-    title: "buttermilk pancakes",
-    category: "breakfast",
-    price: 15.99,
-    img: "./images/item-1.jpeg",
-    desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
-  }
+id: 1,
+title: "buttermilk pancakes",
+category: "breakfast",
+price: 15.99,
+img: "./images/item-1.jpeg",
+desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
+}
 */
 
 // variables
@@ -100,5 +101,58 @@ const menu = [
 
 //functions
 
+// load items
+window.addEventListener("DOMContentLoaded", function () {
+    displayMenuItems(menu);
+    displayMenuButtons();
+});
+
+function displayMenuItems(menuItems) {
+    let displayMenu = menuItems.map(item => {
+        return `<div class="menu-item">
+                    <img src="${item.img}">
+                    <div class="item-info">
+                        <header>
+                            <h4 class="item-title">${item.title}</h4>
+                            <h4 class="item-price">${item.price}</h4>
+                        </header>
+                        <p class="item-text">
+                            ${item.desc}
+                        </p>
+                    </div>
+                </div>`;
+    });
+    displayMenu = displayMenu.join("");
+    menuDiv.innerHTML = displayMenu;
+}
+
+function displayMenuButtons() {
+    const categories = menu.reduce((total, item) => {
+        if (!total.includes(item.category)) {
+            total.push(item.category);
+        }
+        return total;
+    }, ["all"]);
+    const categoryBtns = categories.map(category => {
+        return `<button class="filter-btn" type="button" value="${category}">${category}</button>`;
+    }).join("");
+    filtersDiv.innerHTML = categoryBtns;
+}
 
 //eventlisteners
+/*
+    <div class="menu-item">
+        <img src="images/item-1.jpeg">
+        <div class="item-info">
+            <header>
+                <h4 class="item-title">Buttermilk Pancakes</h4>
+                <h4 class="item-price">$15.99</h4>
+            </header>
+            <p class="item-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur deleniti dignissimos dolor
+                fugiat cum fuga culpa numquam, possimus omnis ea id temporibus iure eaque aperiam sunt. Quisquam
+                debitis voluptates error!
+            </p>
+        </div>
+    </div>
+*/
